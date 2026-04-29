@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Study RPG</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+.card{
+  background:#1e293b;
+  padding:15px;
+  margin:10px;
+  border-radius:12px;
+}
+
+button{
+  padding:10px;
+  margin:5px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.info{background:#3b82f6;color:white;}
+.good{background:#22c55e;color:white;}
+.danger{background:#ef4444;color:white;}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 Study RPG</h1>
+
+<div class="card">
+🏆 XP: <span id="xp">0</span><br>
+⭐ Level: <span id="level">1</span>
+</div>
+
+<div class="card">
+<button class="info" onclick="addXP(16)">📙 عربي +16</button>
+<button class="info" onclick="addXP(30)">📘 تاريخ +30</button>
+<button class="info" onclick="addXP(12)">📗 دين +12</button>
+<button class="info" onclick="addXP(12)">📕 إنجليزي +12</button>
+</div>
+
+<div class="card">
+<button class="good" onclick="rest()">❤️ راحة</button>
+<button class="danger" onclick="resetGame()">🔄 Reset</button>
+</div>
+
+<script>
+
+let xp = 0;
+
+function update(){
+  document.getElementById("xp").innerText = xp;
+
+  let level = 1;
+  if(xp >= 30) level = 2;
+  if(xp >= 60) level = 3;
+  if(xp >= 90) level = 4;
+  if(xp >= 120) level = 5;
+
+  document.getElementById("level").innerText = level;
+}
+
+function addXP(amount){
+  xp += amount;
+  update();
+}
+
+function rest(){
+  alert("❤️ أخذت راحة!");
+}
+
+function resetGame(){
+  xp = 0;
+  update();
+}
+
+update();
+
+</script>
+
+</body>
+</html>
